@@ -36,6 +36,7 @@ st.set_page_config(
 )
 
 st.title("Monte Carlo Option Pricing & Portfolio Risk")
+st.markdown("*By Lenny Lorenz - L'Économique*")
 st.markdown(
     "Adjust the parameters in the sidebar, then click **Run Simulation** "
     "to price European options and compute portfolio risk metrics."
@@ -68,7 +69,7 @@ with st.sidebar:
         "Portfolio notional ($)", value=1_000_000, step=100_000
     )
 
-    run = st.button("🚀 Run Simulation", use_container_width=True)
+    run = st.button("🚀 Run Simulation", width="stretch")
 
 # ── Main panel ───────────────────────────────────────────────────────
 if run:
@@ -115,7 +116,7 @@ if run:
             xaxis_title="Time (years)", yaxis_title="Stock Price ($)",
             template="plotly_white", height=480,
         )
-        st.plotly_chart(fig1, use_container_width=True)
+        st.plotly_chart(fig1, width="stretch")
 
     # ── 2. Convergence ───────────────────────────────────────────────
     with tab2:
@@ -145,7 +146,7 @@ if run:
             yaxis_title="Option price ($)",
             template="plotly_white", height=480,
         )
-        st.plotly_chart(fig2, use_container_width=True)
+        st.plotly_chart(fig2, width="stretch")
 
     # ── 3. Return distribution ───────────────────────────────────────
     with tab3:
@@ -167,7 +168,7 @@ if run:
             xaxis_title="Return", yaxis_title="Frequency",
             template="plotly_white", height=480,
         )
-        st.plotly_chart(fig3, use_container_width=True)
+        st.plotly_chart(fig3, width="stretch")
 
         # Risk summary table
         summary = compute_risk_summary(returns, portfolio_value, [0.90, 0.95, 0.99])
@@ -180,8 +181,9 @@ if run:
                 "ES (%)": f"{v['ES_pct']:.2%}",
                 f"ES ($)": f"${v['ES_dollar']:,.0f}",
             })
+        import pandas as pd
         st.subheader("Risk Summary")
-        st.table(rows)
+        st.table(pd.DataFrame(rows))
 
     # ── 4. VaR confidence curve ──────────────────────────────────────
     with tab4:
@@ -206,7 +208,7 @@ if run:
             yaxis_tickformat=".1%",
             template="plotly_white", height=480,
         )
-        st.plotly_chart(fig4, use_container_width=True)
+        st.plotly_chart(fig4, width="stretch")
 
 else:
     st.info("👈 Set your parameters in the sidebar and click **Run Simulation**.")
