@@ -301,9 +301,11 @@ if run:
         ))
         fig3.add_vline(x=-var95, line_color=PRESTIGE_GOLD, line_width=2.5,
                        annotation_text=f"VaR 95% = {var95:.2%}",
+                       annotation_position="top right",
                        annotation_font=dict(color=PRESTIGE_GOLD, size=13))
         fig3.add_vline(x=-es95, line_color=PRIMARY_GREEN, line_width=2, line_dash="dash",
                        annotation_text=f"ES 95% = {es95:.2%}",
+                       annotation_position="bottom left",
                        annotation_font=dict(color=PRIMARY_GREEN, size=13))
         fig3.update_layout(
             title="Distribution of Simulated Portfolio Returns",
