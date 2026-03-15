@@ -173,7 +173,7 @@ st.markdown(f"""
 
 # ── Header ───────────────────────────────────────────────────────
 st.title("Monte Carlo Option Pricing & Portfolio Risk")
-st.markdown('<p class="subtitle">By Lenny Lorenz, President of L\'Économique</p>', unsafe_allow_html=True)
+st.markdown('<p class="subtitle">By Lenny Lorenz - L\'Économique</p>', unsafe_allow_html=True)
 st.markdown('<hr class="gold-divider">', unsafe_allow_html=True)
 st.markdown(
     "Adjust the parameters in the sidebar, then click **Run Simulation** "
