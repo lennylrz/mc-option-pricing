@@ -299,14 +299,20 @@ if run:
             x=returns, nbinsx=200, name="Returns",
             marker_color=MUTED_GREEN, opacity=0.7,
         ))
-        fig3.add_vline(x=-var95, line_color=PRESTIGE_GOLD, line_width=2.5,
-                       annotation_text=f"VaR 95% = {var95:.2%}",
-                       annotation_position="top right",
-                       annotation_font=dict(color=PRESTIGE_GOLD, size=13))
-        fig3.add_vline(x=-es95, line_color=PRIMARY_GREEN, line_width=2, line_dash="dash",
-                       annotation_text=f"ES 95% = {es95:.2%}",
-                       annotation_position="bottom left",
-                       annotation_font=dict(color=PRIMARY_GREEN, size=13))
+        fig3.add_vline(x=-var95, line_color=PRESTIGE_GOLD, line_width=2.5)
+        fig3.add_vline(x=-es95, line_color=PRIMARY_GREEN, line_width=2, line_dash="dash")
+        fig3.add_annotation(
+            x=-var95, y=1.06, yref="paper", showarrow=False,
+            text=f"<b>VaR 95% = {var95:.2%}</b>",
+            font=dict(color=PRESTIGE_GOLD, size=14, family="Georgia, serif"),
+            xanchor="left", xshift=8,
+        )
+        fig3.add_annotation(
+            x=-es95, y=0.94, yref="paper", showarrow=False,
+            text=f"<b>ES 95% = {es95:.2%}</b>",
+            font=dict(color=PRIMARY_GREEN, size=14, family="Georgia, serif"),
+            xanchor="right", xshift=-8,
+        )
         fig3.update_layout(
             title="Distribution of Simulated Portfolio Returns",
             xaxis_title="Return", yaxis_title="Frequency",
